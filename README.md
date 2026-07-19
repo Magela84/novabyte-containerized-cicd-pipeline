@@ -1,48 +1,42 @@
-# Containerized CI/CD Pipeline — SaaS Software Engagement
+Containerized CI/CD Platform for SaaS SoftwareOverviewA modular, containerized CI/CD platform purpose-built for SaaS software teams seeking to accelerate deployments, increase reliability, and enforce security best practices. All pipelines, infrastructure, and application environments are defined as code for auditability and consistent automation.Problem StatementThe client required:
+Faster, more reliable deployments for multiple SaaS products
+Full infrastructure reproducibility for dev, test, and prod environments
+Security controls and secrets management integrated into the pipeline
+Minimal manual intervention from code commit to production release
+What I Built
+Containerized build agents (Docker) for consistent, portable CI/CD executions
+Declarative pipeline definitions using YAML (Azure Pipelines / GitHub Actions)
+IaC deployment stages using Terraform and ARM/Bicep templates
+Automated secrets management with Azure Key Vault integration
+Role-based access controls for pipeline and deployment resources
+Automated testing, code quality, and security scanning in every build
+Environment promotion with approvals and rollback safety nets
+Pipeline Architecture
+Source: Git-based version control (GitHub/Azure Repos)
+CI: Build, test, scan, and publish artifacts in containers
+CD: Deploy container images and infrastructure to Azure (AKS, App Service, etc.)
+Secrets: Pulled securely at runtime from Key Vault—never stored in code or pipelines
+Monitoring: Integration with Azure Monitor and Application Insights
+Technologies Used
+Docker (containerized build agents and application packaging)
+Azure Pipelines and/or GitHub Actions (CI/CD automation)
+Terraform and ARM/Bicep (infrastructure as code)
+Azure Key Vault (secrets management)
+Azure Kubernetes Service (AKS), App Service
+Application Insights, Azure Monitor
+SonarCloud/SonarQube, OWASP security scanning (optional)
+Usage
+Clone the repo:
+git clone https://github.com/Magela84/containerized-cicd-saas-software.git
 
-## Engagement Overview
-A fast-growing SaaS company was deploying code manually
-via SSH taking 2-3 hours per release with no consistency
-between environments. This engagement delivers a fully
-automated containerized CI/CD pipeline.
-
-## Problem Statement
-Manual deployments were error-prone slow and dependent
-on a single team member. Credentials were hardcoded in
-deployment scripts creating a security risk.
-
-## What I Built
-- Multi-stage Dockerfile for production-grade container images
-- Azure Container Registry with Managed Identity pull access
-- Azure Container Apps with auto-scaling to zero replicas
-- Four-stage GitHub Actions pipeline:
-  Stage 1 - Build and test on every push and pull request
-  Stage 2 - Push image to ACR on merge to main
-  Stage 3 - Deploy to dev automatically
-  Stage 4 - Deploy to prod with manual approval gate
-- Log Analytics Workspace for container monitoring
-
-## Pipeline Flow
-push to main
-  - Build and Test (runs on every push)
-  - Push to ACR (runs on merge to main only)
-  - Deploy to Dev (automatic)
-  - Deploy to Prod (requires manual approval)
-
-## Technologies Used
-Docker, Azure Container Registry, Azure Container Apps,
-GitHub Actions, Managed Identities, Terraform,
-Log Analytics, Python, Flask
-
-## Authentication Note
-Service Principal creation is restricted in the deployment
-tenant. Pipeline YAML is production-ready. Infrastructure
-deployed directly via Terraform and Azure CLI.
-
-## Engagement Outcome
-Eliminated 2-3 hour manual deployment process. Every
-code merge now triggers automated build test and deploy
-in under 5 minutes with zero manual intervention.
-
-## Author
-Cloud Engineer - Magela84
+Configure pipeline variables and secrets for your organization.
+Set up Azure Key Vault and connect it as a pipeline service connection.
+Define your product-specific pipeline YAML and infrastructure templates.
+Commit code—automated builds and deployments trigger per configuration.
+Engagement Outcome
+Accelerated release cycles for SaaS products (hours instead of days)
+Consistent, auditable infrastructure and deployment across environments
+Reduced risk via security scans and enforced secrets management
+Scalable platform for onboarding new products with minimal overhead
+AuthorMagela Bobby Akinola
+LinkedIn | Portfolio | GitHub
